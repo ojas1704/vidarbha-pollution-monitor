@@ -12,18 +12,26 @@ from datetime import datetime, timedelta
 st.set_page_config(page_title="Vidarbha Air Pulse", layout="wide", page_icon="🍃")
 
 # Corporate Green Theme (Avaada Style)
+# Corporate Green Theme (Avaada Style) - FORCE DARK TEXT
 st.markdown("""
     <style>
-    /* Main Background */
+    /* Force background to white and text to dark everywhere */
     .stApp {
         background-color: #ffffff;
-    }
-    /* Headers */
-    h1, h2, h3 {
         color: #1a1a1a;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 600;
     }
+    
+    /* Force specific headers to be dark grey */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: #2E4053 !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Fix for the Metrics inside the cards */
+    div[data-testid="stMetricValue"] {
+        color: #1a1a1a !important;
+    }
+    
     /* Custom Green Highlight for metrics */
     .metric-container {
         background-color: #f0fdf4; /* Light Green */
@@ -32,10 +40,22 @@ st.markdown("""
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+    
+    /* Ensure metric text inside custom HTML is visible */
+    .metric-container h1 {
+        color: #1a1a1a !important;
+    }
+    .metric-container h3 {
+        color: #2E4053 !important;
+    }
+    .metric-container p {
+        color: #505050 !important;
+    }
+
     /* Buttons */
     div.stButton > button {
         background-color: #28B463;
-        color: white;
+        color: white !important; /* Keep button text white */
         border-radius: 30px;
         padding: 10px 30px;
         border: none;
@@ -45,6 +65,7 @@ st.markdown("""
     div.stButton > button:hover {
         background-color: #1D8348;
         transform: scale(1.05);
+        color: white !important;
     }
     </style>
     """, unsafe_allow_html=True)
